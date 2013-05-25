@@ -1,4 +1,6 @@
-package com.gclue.DrawSample006;
+package com.example.drawsample006;
+
+import com.gclue.DrawSample006.R;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,52 +18,29 @@ public class DrawSample006Activity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		// クラスのインスタンスを生成
 		MyView mView = new MyView( this );
-
-		// Viewに設定
 		setContentView( mView );
 	}
 }
 
-/**
- * 描画用のクラス。
- */
 class MyView extends View {
 
-	/** 画像を格納する変数。 */
 	private Bitmap myBitmap;
 
-	/**
-	 * コンストラクタ。
-	 * @param context コンテキスト
-	 */
 	public MyView( Context context ) {
 		super( context );
 		setFocusable( true );
-
-		// Resourceインスタンスの生成
 		Resources res = this.getContext().getResources();
-		// 画像の読み込み(res/drawable/gclue_logo.gif)
 		myBitmap = BitmapFactory.decodeResource( res, R.drawable.gclue_logo );
 	}
 
-	/**
-	 * 描画処理を行う。
-	 */
 	@Override
 	protected void onDraw( Canvas canvas ) {
 		super.onDraw( canvas );
-
-		// 背景色を設定
 		canvas.drawColor( Color.BLUE );
-
-		// 描画するための線の色を設定
 		Paint mPaint = new Paint();
 		mPaint.setStyle( Paint.Style.FILL );
 		mPaint.setARGB( 255, 255, 255, 100 );
-
-		// Bitmapイメージの描画
 		canvas.drawBitmap(myBitmap, 0, 0, mPaint);
 	}
 }
